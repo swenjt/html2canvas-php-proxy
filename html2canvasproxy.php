@@ -411,6 +411,10 @@ function curlDownloadSource($url, $toSource)
     //Reformat url
     $currentUrl  = (empty($uri['scheme']) ? 'http': $uri['scheme']) . '://';
     $currentUrl .= empty($uri['host'])    ? '': $uri['host'];
+    if(isset($uri['port']))
+    {
+        $currentUrl .= empty($uri['port']) ? '': ':'.$uri['port'];//修复具有端口
+    }
     $currentUrl .= empty($uri['path'])    ? '/': $uri['path'];
     $currentUrl .= empty($uri['query'])   ? '': ('?' . $uri['query']);
 
